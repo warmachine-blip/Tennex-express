@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+/* ─── Tennex Express design tokens ───────────────────────────────────────── */
+@theme {
+  /* Colors */
+  --color-ink:        #14130F;
+  --color-ink-soft:   #2A2823;
+  --color-bg:         #FAF7F0;
+  --color-surface:    #FFFFFF;
+  --color-muted:      #6F6D66;
+  --color-hairline:   #E6E1D6;
+  --color-accent:     #E8D44A;
+  --color-accent-soft:#FBF3BE;
+  --color-success:    #2E7D32;
+
+  /* Typography */
+  --font-sans: var(--font-inter-tight), "Inter Tight", system-ui, sans-serif;
+
+  /* Border radius */
+  --radius-card: 16px;
+
+  /* Content width */
+  --spacing-content: 1280px;
+}
+
+/* ─── Base reset ─────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: #FAF7F0;
+  color: #14130F;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  line-height: 1.6;
+}
+
+/* ─── Type scale (Formix-matched) ────────────────────────────────────────── */
+.text-hero {
+  font-size: clamp(3.5rem, 7vw, 6rem);
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 1.04;
+}
+
+.text-h1 {
+  font-size: clamp(2.5rem, 4.5vw, 4rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+}
+
+.text-h2 {
+  font-size: clamp(2rem, 3.2vw, 3rem);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+}
+
+.text-h3 {
+  font-size: 1.375rem;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  line-height: 1.3;
+}
+
+.text-slash-label {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  line-height: 1.4;
+  text-transform: lowercase;
+}
+
+.text-stat-number {
+  font-size: 2.25rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+
+.text-big-number {
+  font-size: 1.75rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+
+/* ─── Big text CTA ───────────────────────────────────────────────────────── */
+.text-big-cta {
+  font-size: clamp(3rem, 8vw, 7.5rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+/* ─── Scroll behaviour for drag-to-scroll ────────────────────────────────── */
+.drag-scroll {
+  cursor: grab;
+  user-select: none;
+}
+.drag-scroll:active {
+  cursor: grabbing;
+}
+
+/* ─── Reduced motion ─────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
