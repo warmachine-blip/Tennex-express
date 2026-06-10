@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Tennex Express
 
-## Getting Started
+A modern tennis equipment storefront built with Next.js 16 App Router, TypeScript, and Tailwind CSS v4.
 
-First, run the development server:
+## What we built
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+**13 product categories** — racquets, strings, overgrips, dampeners, bags, balls, accessories, court equipment, stringing machines, junior gear, men's clothing, women's clothing, and shoes.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**100+ products** with real Tennis Warehouse CDN images for all categories except shoes (placeholders). Brands include Wilson, Babolat, Head, Nike, adidas, New Balance, Lacoste, On Running, Prince, Yonex, and more.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**Shopping cart** — persistent via localStorage, slide-out drawer, variant/size selection, quick-add buttons on every product card.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+**Checkout flow** — shipping address, shipping method (standard/express), promo codes (`TENNEX10`, `RALLY5`), payment method selector (Card/PayPal/Stripe UI), order confirmation with receipt.
 
-## Learn More
+**Transactional emails** via Resend — order confirmation, newsletter welcome, and contact form lead notification all send to `alexeiborbot@gmail.com`.
 
-To learn more about Next.js, take a look at the following resources:
+**Search** — full-text modal (Cmd+K) searching all products by name, brand, category, and tags.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**Category filters** — sidebar with Brand, Level, Price, Item Type, Availability, and Status filters. OR within group, AND across groups.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+**Static pages** — /shipping, /returns, /privacy, /terms, /contact, /about, /blog.
 
-## Deploy on Vercel
+**Other features** — page transitions, skeleton loaders, scroll-to-top, sticky announcement bar, size guide modal, OG image, JSON-LD schema, breadcrumbs, related products.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Running locally
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Double-click **Start Tennex.bat** on the Desktop. It starts the dev server and opens the browser automatically.
+
+> Use `http://127.0.0.1:3000` — not `localhost:3000` (DNS issue on this machine).
+
+## Tech stack
+
+- Next.js 16.2.7 (App Router, SSG)
+- React 19
+- TypeScript 5
+- Tailwind CSS v4
+- Resend (email)
+
+## Still to do
+
+1. **Stripe** — checkout is currently a UI mock, no real payments
+2. **Resend domain** — verify a custom domain to send emails to real customers
+3. **Deploy to Vercel** — site only runs locally
+4. **Shoe images** — swap picsum placeholders with real TW CDN codes
