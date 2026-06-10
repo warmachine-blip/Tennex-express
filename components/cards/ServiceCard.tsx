@@ -27,13 +27,13 @@ export function ServiceCard({
       className={`bg-surface border border-hairline rounded-[16px] overflow-hidden flex flex-col ${className}`}
     >
       {/* Image */}
-      <div className="relative h-56 overflow-hidden">
+      <div className="relative h-56 overflow-hidden bg-hairline/30">
         <Image
           src={image}
           alt={headline}
           fill
           sizes="(max-width: 768px) 100vw, 33vw"
-          className="object-cover"
+          className="object-contain p-6"
         />
       </div>
 

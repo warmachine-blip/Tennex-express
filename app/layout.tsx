@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter_Tight } from "next/font/google";
+import { Providers } from "./Providers";
 import "./globals.css";
 
 const interTight = Inter_Tight({
@@ -34,13 +35,11 @@ export const metadata: Metadata = {
     title: "Tennex Express — Real tennis gear, real prices",
     description:
       "Affordable tennis equipment for beginners and intermediate players.",
-    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Tennex Express" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Tennex Express — Real tennis gear, real prices",
     description: "Affordable tennis equipment for beginners and intermediate players.",
-    images: ["/og-image.jpg"],
   },
   robots: {
     index: true,
@@ -57,7 +56,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${interTight.variable} h-full`}>
       <body className="min-h-full flex flex-col bg-bg text-ink antialiased">
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

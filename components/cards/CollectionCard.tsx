@@ -24,13 +24,13 @@ export function CollectionCard({
       className={`group relative bg-surface border border-hairline rounded-[16px] overflow-hidden flex flex-col ${className}`}
     >
       {/* Image */}
-      <div className="relative overflow-hidden aspect-[4/3]">
+      <div className="relative overflow-hidden aspect-[4/3] bg-hairline/30">
         <Image
           src={image}
           alt={name}
           fill
           sizes="(max-width: 768px) 100vw, 50vw"
-          className="object-cover transition-transform duration-400 group-hover:scale-[1.03]"
+          className="object-contain p-6 transition-transform duration-400 group-hover:scale-[1.03]"
         />
       </div>
 

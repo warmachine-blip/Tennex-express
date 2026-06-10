@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { ContactForm } from "@/components/ui/ContactForm";
 import { SlashLabel } from "@/components/ui/SlashLabel";
 
 export const metadata: Metadata = {
@@ -23,77 +24,7 @@ export default function ContactPage() {
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
-            {/* Form */}
-            <form
-              action="/api/lead"
-              method="POST"
-              className="flex flex-col gap-5"
-            >
-              <div className="flex flex-col gap-1.5">
-                <label htmlFor="name" className="text-[13px] font-medium text-ink">
-                  Name
-                </label>
-                <input
-                  id="name"
-                  name="name"
-                  type="text"
-                  required
-                  placeholder="Your name"
-                  className="rounded-2xl border border-hairline bg-surface px-5 py-3.5 text-[14px] text-ink placeholder:text-muted focus:outline-none focus:border-ink transition-colors"
-                />
-              </div>
-
-              <div className="flex flex-col gap-1.5">
-                <label htmlFor="email" className="text-[13px] font-medium text-ink">
-                  Email
-                </label>
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  required
-                  placeholder="you@email.com"
-                  className="rounded-2xl border border-hairline bg-surface px-5 py-3.5 text-[14px] text-ink placeholder:text-muted focus:outline-none focus:border-ink transition-colors"
-                />
-              </div>
-
-              <div className="flex flex-col gap-1.5">
-                <label htmlFor="subject" className="text-[13px] font-medium text-ink">
-                  Subject
-                </label>
-                <select
-                  id="subject"
-                  name="subject"
-                  className="rounded-2xl border border-hairline bg-surface px-5 py-3.5 text-[14px] text-ink focus:outline-none focus:border-ink transition-colors appearance-none"
-                >
-                  <option value="order">Order question</option>
-                  <option value="return">Return or exchange</option>
-                  <option value="sizing">Sizing help</option>
-                  <option value="other">Something else</option>
-                </select>
-              </div>
-
-              <div className="flex flex-col gap-1.5">
-                <label htmlFor="message" className="text-[13px] font-medium text-ink">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  required
-                  rows={5}
-                  placeholder="Tell us what you need..."
-                  className="rounded-2xl border border-hairline bg-surface px-5 py-3.5 text-[14px] text-ink placeholder:text-muted focus:outline-none focus:border-ink transition-colors resize-none"
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="rounded-full bg-ink text-bg px-8 py-4 text-[14px] font-medium hover:bg-ink-soft transition-colors self-start"
-              >
-                Send message
-              </button>
-            </form>
+            <ContactForm />
 
             {/* Info */}
             <div className="flex flex-col gap-8">

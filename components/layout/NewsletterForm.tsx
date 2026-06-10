@@ -3,22 +3,18 @@
 import { useState } from "react";
 
 export function NewsletterForm() {
-  const [status, setStatus] = useState<"idle" | "loading" | "done" | "error">("idle");
+  const [status, setStatus] = useState<"idle" | "loading" | "done">("idle");
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    const email = (e.currentTarget.elements.namedItem("email") as HTMLInputElement).value;
     setStatus("loading");
-    const email = (e.currentTarget.elements.namedItem("email") as HTMLInputElement)?.value;
-    try {
-      const res = await fetch("/api/lead", {
-        method: "POST",
-        body: JSON.stringify({ email }),
-        headers: { "Content-Type": "application/json" },
-      });
-      setStatus(res.ok ? "done" : "error");
-    } catch {
-      setStatus("error");
-    }
+    await fetch("/api/newsletter", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email }),
+    }).catch(() => {});
+    setStatus("done");
   }
 
   if (status === "done") {

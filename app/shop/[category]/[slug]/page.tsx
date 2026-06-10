@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import Image from "next/image";
 import Link from "next/link";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { Button } from "@/components/ui/Button";
 import { SlashLabel } from "@/components/ui/SlashLabel";
 import { ProductCard } from "@/components/cards/ProductCard";
+import { ProductGallery } from "@/components/ui/ProductGallery";
+import { ProductActions } from "@/components/ui/ProductActions";
 import { products, findBySlug, findByCategory, categories } from "@/lib/products";
 
 interface Props {
@@ -29,6 +29,19 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: product.description,
       images: [{ url: product.images[0], width: 800, height: 800, alt: product.name }],
     },
+  };
+}
+
+function buildBreadcrumbJsonLd(product: NonNullable<ReturnType<typeof findBySlug>>) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://tennexexpress.com" },
+      { "@type": "ListItem", position: 2, name: "Shop", item: "https://tennexexpress.com/shop" },
+      { "@type": "ListItem", position: 3, name: product.category, item: `https://tennexexpress.com/shop/${product.category}` },
+      { "@type": "ListItem", position: 4, name: product.shortName, item: `https://tennexexpress.com/shop/${product.category}/${product.slug}` },
+    ],
   };
 }
 
@@ -80,12 +93,20 @@ export default async function ProductPage({ params }: Props) {
           __html: JSON.stringify(buildJsonLd(product)),
         }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(buildBreadcrumbJsonLd(product)),
+        }}
+      />
       <Header />
       <main className="pt-24 pb-20">
         {/* Breadcrumb */}
         <div className="max-w-[1280px] mx-auto px-6 py-4">
           <nav className="flex items-center gap-2 text-[12px] text-muted" aria-label="Breadcrumb">
             <Link href="/" className="hover:text-ink transition-colors">Home</Link>
+            <span>/</span>
+            <Link href="/shop" className="hover:text-ink transition-colors">Shop</Link>
             <span>/</span>
             <Link href={`/shop/${category}`} className="hover:text-ink transition-colors">
               {cat?.name ?? category}
@@ -99,32 +120,11 @@ export default async function ProductPage({ params }: Props) {
         <div className="max-w-[1280px] mx-auto px-6 py-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Gallery */}
-            <div className="flex flex-col gap-3">
-              <div className="relative aspect-square rounded-[16px] overflow-hidden bg-bg border border-hairline">
-                <Image
-                  src={product.images[0]}
-                  alt={product.name}
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  priority
-                  className="object-cover"
-                />
-                {savings && (
-                  <div className="absolute top-4 left-4 bg-accent text-ink text-[12px] font-medium px-3 py-1.5 rounded-full">
-                    -{savings}% vs MSRP
-                  </div>
-                )}
-              </div>
-              {product.images.length > 1 && (
-                <div className="flex gap-3">
-                  {product.images.slice(1).map((img, i) => (
-                    <div key={i} className="relative w-20 h-20 rounded-[12px] overflow-hidden border border-hairline bg-bg flex-shrink-0">
-                      <Image src={img} alt={`${product.shortName} view ${i + 2}`} fill sizes="80px" className="object-cover" />
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
+            <ProductGallery
+              images={product.images}
+              productName={product.name}
+              savings={savings}
+            />
 
             {/* Details — sticky on scroll */}
             <div className="lg:sticky lg:top-24 h-fit flex flex-col gap-6">
@@ -160,38 +160,17 @@ export default async function ProductPage({ params }: Props) {
                 )}
               </div>
 
-              {/* Variants */}
-              {product.variants && product.variants.length > 0 && (
-                <div>
-                  <p className="text-[13px] font-medium text-ink mb-2">Select option</p>
-                  <div className="flex flex-wrap gap-2">
-                    {product.variants.map((v) => (
-                      <button
-                        key={v.id}
-                        disabled={!v.inStock}
-                        className={`px-4 py-2 rounded-full border text-[13px] font-medium transition-colors duration-150 ${
-                          v.inStock
-                            ? "border-hairline text-ink hover:border-ink cursor-pointer"
-                            : "border-hairline text-muted opacity-50 cursor-not-allowed line-through"
-                        }`}
-                      >
-                        {v.label}
-                        {!v.inStock && " — sold out"}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              )}
-
-              {/* Add to cart */}
-              <div className="flex flex-col gap-3">
-                <Button variant="primary" size="lg" className="w-full justify-center">
-                  {product.inStock ? "Add to cart" : "Out of stock"}
-                </Button>
-                <p className="text-[12px] text-muted text-center">
-                  Free overgrip included · Ships in 1 business day
-                </p>
-              </div>
+              {/* Variants + Add to cart */}
+              <ProductActions
+                productId={product.id}
+                name={product.name}
+                price={product.price}
+                image={product.images[0]}
+                slug={product.slug}
+                category={product.category}
+                inStock={product.inStock}
+                variants={product.variants}
+              />
 
               {/* Spec list */}
               <div className="border-t border-hairline pt-6">

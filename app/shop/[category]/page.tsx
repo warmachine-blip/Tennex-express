@@ -3,8 +3,8 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { ProductCard } from "@/components/cards/ProductCard";
 import { SlashLabel } from "@/components/ui/SlashLabel";
+import { FilteredProductList } from "@/components/ui/FilteredProductList";
 import { categories, findByCategory, type Category } from "@/lib/products";
 
 interface Props {
@@ -74,17 +74,9 @@ export default async function CategoryPage({ params }: Props) {
           <p className="text-[16px] text-muted max-w-[480px]">{cat.tagline}</p>
         </div>
 
-        {/* Product grid */}
+        {/* Products with filters */}
         <div className="max-w-[1280px] mx-auto px-6 py-12">
-          {products.length === 0 ? (
-            <p className="text-muted">No products in this category yet.</p>
-          ) : (
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-              {products.map((product) => (
-                <ProductCard key={product.id} product={product} />
-              ))}
-            </div>
-          )}
+          <FilteredProductList products={products} />
         </div>
       </main>
       <Footer />

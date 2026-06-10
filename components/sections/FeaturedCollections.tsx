@@ -10,26 +10,26 @@ const COLLECTIONS = [
   {
     name: "Beginner kit",
     category: "Starter bundle",
-    image: "https://picsum.photos/seed/tennex-beginner-kit/800/600",
-    href: "#bundles",
+    image: "https://img.tennis-warehouse.com/watermark/rs.php?path=WU1005-1.jpg&nw=600",
+    href: "/shop/racquets",
   },
   {
     name: "Intermediate kit",
     category: "Upgrade bundle",
-    image: "https://picsum.photos/seed/tennex-intermediate-kit/800/600",
-    href: "#bundles",
+    image: "https://img.tennis-warehouse.com/watermark/rs.php?path=WB9810-1.jpg&nw=600",
+    href: "/shop/racquets",
   },
   {
     name: "Restring kit",
     category: "Strings & tools",
-    image: "https://picsum.photos/seed/tennex-restring-kit/800/600",
+    image: "https://img.tennis-warehouse.com/watermark/rs.php?path=ALUSTR-SI-1.jpg&nw=600",
     href: "/shop/strings",
   },
   {
     name: "Coach kit",
     category: "Court equipment",
-    image: "https://picsum.photos/seed/tennex-coach-kit/800/600",
-    href: "#bundles",
+    image: "https://img.tennis-warehouse.com/watermark/rs.php?path=ELITE2R-1.jpg&nw=600",
+    href: "/shop/machines",
   },
 ];
 

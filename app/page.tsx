@@ -9,7 +9,6 @@ import { WhyTennex } from "@/components/sections/WhyTennex";
 import { ShopByCategory } from "@/components/sections/ShopByCategory";
 import { HowWeSource } from "@/components/sections/HowWeSource";
 import { StatRow } from "@/components/ui/StatRow";
-import { FeaturedCollections } from "@/components/sections/FeaturedCollections";
 import { WhyShopWithUs } from "@/components/sections/WhyShopWithUs";
 import { Reviews } from "@/components/sections/Reviews";
 import { StarterBundles } from "@/components/sections/StarterBundles";
@@ -92,10 +91,7 @@ export default function HomePage() {
         {/* 7. Stats strip */}
         <StatRow stats={STATS_1} />
 
-        {/* 8. Featured collections */}
-        <FeaturedCollections />
-
-        {/* 9. Why shop with us */}
+        {/* 8. Why shop with us */}
         <WhyShopWithUs />
 
         {/* 10. Reviews */}

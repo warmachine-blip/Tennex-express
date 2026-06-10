@@ -29,13 +29,13 @@ export default function ShopPage() {
                 href={`/shop/${cat.slug}`}
                 className="group bg-surface border border-hairline rounded-[16px] overflow-hidden hover:border-ink/30 transition-all duration-200"
               >
-                <div className="relative aspect-[4/3] overflow-hidden">
+                <div className="relative aspect-[4/3] overflow-hidden bg-hairline/30">
                   <Image
                     src={cat.heroImage}
                     alt={cat.name}
                     fill
                     sizes="(max-width: 768px) 50vw, 25vw"
-                    className="object-cover transition-transform duration-400 group-hover:scale-[1.03]"
+                    className="object-contain p-4 transition-transform duration-400 group-hover:scale-[1.03]"
                   />
                 </div>
                 <div className="p-4">

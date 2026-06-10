@@ -21,8 +21,31 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col items-center justify-center pt-24 pb-20 px-6 bg-bg"
+      className="relative min-h-screen flex flex-col items-center justify-center pt-24 pb-20 px-6 bg-bg overflow-hidden"
     >
+      {/* ── Background decoration ── */}
+      <div className="absolute inset-0 pointer-events-none" aria-hidden>
+        {/* Top-right accent orb */}
+        <div
+          className="absolute -top-40 -right-40 w-[680px] h-[680px] rounded-full blur-[90px]"
+          style={{ background: "rgba(232,212,74,0.22)" }}
+        />
+        {/* Bottom-left accent orb */}
+        <div
+          className="absolute -bottom-28 -left-28 w-[500px] h-[500px] rounded-full blur-[80px]"
+          style={{ background: "rgba(232,212,74,0.14)" }}
+        />
+        {/* Centre warmth */}
+        <div
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[560px] rounded-full blur-[120px]"
+          style={{ background: "rgba(232,212,74,0.07)" }}
+        />
+        {/* Large concentric rings */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[820px] h-[820px] rounded-full border border-hairline/50" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1120px] h-[1120px] rounded-full border border-hairline/30" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1440px] h-[1440px] rounded-full border border-hairline/15" />
+      </div>
+
       <div className="max-w-[800px] mx-auto flex flex-col items-center text-center gap-8">
         {/* Scarcity pill */}
         <motion.div

@@ -19,7 +19,7 @@ const CATEGORIES = [
       "All pre-strung, head cover included",
       "Grip sizes 4 1/4 to 4 1/2",
     ],
-    image: "https://picsum.photos/seed/tennex-cat-racquets/800/500",
+    image: "https://img.tennis-warehouse.com/watermark/rs.php?path=HSPMP6-1.jpg&nw=600",
     href: "/shop/racquets",
   },
   {
@@ -34,7 +34,7 @@ const CATEGORIES = [
       "Novelty dampener 4-packs at $8",
       "Band and headband sets",
     ],
-    image: "https://picsum.photos/seed/tennex-cat-strings/800/500",
+    image: "https://img.tennis-warehouse.com/watermark/rs.php?path=ALUSTR-SI-1.jpg&nw=600",
     href: "/shop/strings",
   },
   {
@@ -49,7 +49,7 @@ const CATEGORIES = [
       "75-ball hopper at $45",
       "60-pack practice balls at $45",
     ],
-    image: "https://picsum.photos/seed/tennex-cat-bags/800/500",
+    image: "https://img.tennis-warehouse.com/watermark/rs.php?path=BPD6R-1.jpg&nw=600",
     href: "/shop/bags",
   },
 ];
